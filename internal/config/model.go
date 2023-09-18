@@ -3,7 +3,8 @@ package config
 import "time"
 
 type Config struct {
-	Server *ServerConfig
+	Server   *ServerConfig
+	Database *DatabaseConfig
 }
 
 type ServerConfig struct {
@@ -12,4 +13,22 @@ type ServerConfig struct {
 	ReadTimeout  time.Duration
 	WriteTimeout time.Duration
 	IdleTimeout  time.Duration
+}
+
+type DatabaseConfig struct {
+	Postgres *PostgresConfig
+}
+
+type PostgresConfig struct {
+	connectionURL      string
+	Host               string
+	Port               int
+	Driver             string
+	DatabaseName       string
+	Username           string
+	Password           string
+	MaxIdleConnections int
+	MaxOpenConnections int
+	ReadTimeout        time.Duration
+	WriteTimeout       time.Duration
 }

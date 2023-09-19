@@ -28,3 +28,11 @@ func SetupLogger(config *config.LoggerConfig) {
 
 	return
 }
+
+func Infof(format string, args ...interface{}) {
+	logger.Infof(format, args...)
+}
+
+func Errorf(format string, args ...interface{}) {
+	logger.Errorf(format, args...)
+}

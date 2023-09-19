@@ -49,6 +49,10 @@ func Init() {
 			Name: getStringOrPanic("APP_NAME"),
 			Port: getIntOrPanic("PORT"),
 		},
+		Logger: &LoggerConfig{
+			Level:  getStringOrPanic("LOG_LEVEL"),
+			Format: getStringOrPanic("LOG_FORMAT"),
+		},
 	}
 }
 

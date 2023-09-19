@@ -1,10 +1,18 @@
 package config
 
-import "time"
+import (
+	"time"
+)
 
 type Config struct {
 	Server   *ServerConfig
 	Database *DatabaseConfig
+	Logger   *LoggerConfig
+}
+
+type LoggerConfig struct {
+	Level  string
+	Format string
 }
 
 type ServerConfig struct {

@@ -1,3 +1,4 @@
+APP_NAME: leaderboard
 PORT: 8085
 
 DB_NAME: leaderboard_production

@@ -1,8 +1,10 @@
+APP_NAME: leaderboard
 PORT: 8085
 
 DB_NAME: leaderboard_production
 DB_HOST: localhost
 DB_PORT: 5432
+DB_DRIVER: postgres
 DB_USER: leaderboard
 DB_PASSWORD: rj123@
 DB_READ_TIMEOUT_IN_MS: 50

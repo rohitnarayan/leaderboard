@@ -6,6 +6,7 @@ import (
 	"github.com/jmoiron/sqlx"
 
 	"github.com/rohitnarayan/leaderboard/internal/config"
+	"github.com/rohitnarayan/leaderboard/internal/logger"
 )
 
 func Init() {
@@ -20,6 +21,8 @@ func Init() {
 	if err != nil {
 		log.Fatalf("failed to init readDB, err: %+v", err)
 	}
+
+	logger.SetupLogger(config.App.Logger)
 
 	log.Println(writeDB, readDB)
 }

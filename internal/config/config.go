@@ -13,14 +13,19 @@ const (
 )
 
 func Init() {
-	if os.Getenv(environment) != "test" {
-		viper.SetConfigName("application")
-	} else {
+	if os.Getenv(environment) == "test" {
 		viper.SetConfigName("test")
+	} else {
+		viper.SetConfigName("application")
 	}
 
 	viper.SetConfigType("yaml")
 	viper.AddConfigPath("./configs")
+	viper.AddConfigPath("./../configs")
+	viper.AddConfigPath("./../../configs")
+	viper.AddConfigPath("./../../../configs")
+	viper.AddConfigPath("./../../../../configs")
+	viper.AddConfigPath("./../../../../../configs")
 
 	_ = viper.ReadInConfig()
 	viper.AutomaticEnv()
@@ -41,7 +46,14 @@ func Init() {
 			},
 		},
 		Server: &ServerConfig{
+			Name: getStringOrPanic("APP_NAME"),
 			Port: getIntOrPanic("PORT"),
 		},
 	}
+}
+
+func InitTestConfig() {
+	_ = os.Setenv("ENVIRONMENT", "test")
+
+	Init()
 }

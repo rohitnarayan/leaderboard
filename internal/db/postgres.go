@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/jmoiron/sqlx"
+	_ "github.com/lib/pq"
 	"github.com/pkg/errors"
 
 	"github.com/rohitnarayan/leaderboard/internal/config"
@@ -47,7 +48,7 @@ func Get(ctx context.Context, readDB *sqlx.DB, timeout time.Duration, dest inter
 	}
 
 	return withTimeout(ctx, timeout, func(ctx context.Context) error {
-		if err := readDB.GetContext(ctx, dest, q.Query, q.Args...); err != nil {
+		if err := readDB.SelectContext(ctx, dest, q.Query, q.Args...); err != nil {
 			return errors.Wrap(err, "[postgres.Get] failed to get result")
 		}
 		return nil

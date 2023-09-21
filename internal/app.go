@@ -6,6 +6,7 @@ import (
 	"github.com/jmoiron/sqlx"
 
 	"github.com/rohitnarayan/leaderboard/internal/config"
+	"github.com/rohitnarayan/leaderboard/internal/db"
 	"github.com/rohitnarayan/leaderboard/internal/logger"
 )
 
@@ -28,9 +29,9 @@ func Init() {
 }
 
 func WriteDB(cfg *config.Config) (*sqlx.DB, error) {
-	return config.NewDB(cfg.Database.Postgres)
+	return db.NewDB(cfg.Database.Postgres)
 }
 
 func ReadDB(cfg *config.Config) (*sqlx.DB, error) {
-	return config.NewDB(cfg.Database.Postgres)
+	return db.NewDB(cfg.Database.Postgres)
 }
